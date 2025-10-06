@@ -1,20 +1,29 @@
 services:
   - type: web
-    name: agent
+    name: executor-service
     env: node
-    rootDir: server/agent
+    rootDir: executor
     buildCommand: npm install
     startCommand: node index.js
+    plan: free
     envVars:
+      - key: PORT
+        value: 3000
+
+  - type: web
+    name: agent-service
+    env: node
+    rootDir: agent
+    buildCommand: npm install
+    startCommand: node index.js
+    plan: free
+    envVars:
+      - key: PORT
+        value: 3001
       - key: EXECUTOR_URL
         fromService:
           type: web
-          name: executor
+          name: executor-service
           property: url
-
-  - type: web
-    name: executor
-    env: node
-    rootDir: server/executor
-    buildCommand: npm install
-    startCommand: node index.js
+      - key: GOOGLE_API_KEY
+        sync: false  # set manually in Render dashboard
