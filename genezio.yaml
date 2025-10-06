@@ -26,6 +26,7 @@ frontend:
     VITE_API_URL: ${{ backend.functions.agent.url }}
   path: client
   publish: dist
+  subdomain: Agent-Obi
   scripts:
     build: npm run build
     deploy: npm install
