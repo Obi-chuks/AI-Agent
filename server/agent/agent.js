@@ -23,7 +23,7 @@ const weatherTool = tool( async ({query}) => {
 
 const jsExecutor = tool(async({code}) => {
 
-    const response = await fetch(process.env.EXECUTOR_HOST || '' ,{
+    const response = await fetch(process.env.EXECUTOR_URL || '' ,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
