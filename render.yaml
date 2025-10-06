@@ -24,6 +24,6 @@ services:
         fromService:
           type: web
           name: executor-service
-          property: url
+          property: host
       - key: GOOGLE_API_KEY
         sync: false  # set manually in Render dashboard
